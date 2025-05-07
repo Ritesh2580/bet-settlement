@@ -25,7 +25,7 @@ public class SportEventOutcomePublisher extends AbstractEventPublisher<SportEven
 
     @Override
     public String getKey(SportEventOutcome event) {
-        return event.getEventId();
+        return event.getEventId().toString();
     }
 
 

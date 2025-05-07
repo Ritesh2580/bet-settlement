@@ -28,7 +28,7 @@ CREATE TABLE t_sport_event
 -- changeset Ritesh:create-table-t_bet splitStatements:true
 CREATE TABLE t_bet
 (
-    c_id       UUID           NOT NULL DEFAULT RANDOM_UUID() PRIMARY KEY,
+    id       UUID           NOT NULL DEFAULT RANDOM_UUID() PRIMARY KEY,
     user_id    VARCHAR(36),
     event_id   VARCHAR(255)   NOT NULL,
     bet_amount DECIMAL(19, 4) NOT NULL,

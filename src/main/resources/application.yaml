@@ -35,6 +35,11 @@ spring:
     consumer:
       group-id: sport-event-group
       max-poll-records: 10
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "org.sporty.bet.settlement.kafka.payload"
+        spring.json.value.default.type: "org.sporty.bet.settlement.kafka.payload.SportEventOutcome"
     listener:
       concurrency: 3
 ---

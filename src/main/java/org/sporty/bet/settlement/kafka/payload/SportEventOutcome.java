@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.UUID;
 
 
 @Getter
@@ -14,6 +15,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class SportEventOutcome {
     private String eventId;
-    private String winner;
+    private String winnerId;
+    private String eventName;
     private Instant occurredAt;
 }

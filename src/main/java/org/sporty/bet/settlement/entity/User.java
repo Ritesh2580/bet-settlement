@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "t_bet")
+@Table(name = "t_user")
 public class User {
     @Id
     @GeneratedValue(generator = "UUID")
