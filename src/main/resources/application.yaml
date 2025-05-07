@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: SportyAssignment
+
+---
+spring:
+  datasource:
+    url: jdbc:h2:mem:bet_settlement_service;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: root
+    password: root
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none # disable let liquibase handle it
+    show-sql: true    # optional, logs SQL to the console
+    properties:
+      hibernate:
+        format_sql: true  # optional, pretty-print SQL
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+---
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: sport-event-group
+      max-poll-records: 10
+    listener:
+      concurrency: 3
+---
+sports:
+  kafka:
+    topic:
+      outcome: event-outcomes
+---
+rocketmq:
+  # address(es) of your NameServer (multiple hosts separated by ;)
+  name-server: 127.0.0.1:9876           # :contentReference[oaicite:0]{index=0}
+  # Producer configuration
+  producer:
+    group: greetings-producer-group    # your producer group name :contentReference[oaicite:1]{index=1}
+  # Consumer configuration
+  consumer:
+    group: my-consumer-group            # your consumer group name
+
+
