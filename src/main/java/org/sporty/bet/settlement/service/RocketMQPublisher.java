@@ -10,13 +10,15 @@ import java.util.Optional;
 @Slf4j
 public class RocketMQPublisher implements Publisher<Optional<String>, String> {
     private final RocketMQTemplate rocket;
+    private final String rocketMQTopic = "bet-settlements";
+
     public RocketMQPublisher(RocketMQTemplate rocket) {
         this.rocket = rocket;
     }
 
     @Override
     public Optional<String> publish(String msg) {
-        rocket.convertAndSend("rocket-topic", msg);
+        rocket.convertAndSend(rocketMQTopic, msg);
         log.info("🔔 Published to RocketMQ: {}", msg);
         return Optional.empty();
     }
